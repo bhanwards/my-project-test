@@ -1,0 +1,1 @@
+this is a 6.txt file in feature-2 branch changes now
