@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                bat 'docker rm -f mypipelineweb || true..'
+                bat 'docker rm -f mypipelineweb || true'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'docker run -it -d -p 96:80 --name mypipelineweb bhanwardocker/myfirstpipeline'
+                bat 'docker run -it -d -p 96:80 --name mypipelineweb bhanwardocker/myfirstpipeline'
             }
         }
     }
