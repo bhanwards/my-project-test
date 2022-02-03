@@ -1,20 +1,20 @@
 pipeline {
-    agent any
+    agent { label "Slave-1"}
 
     stages {
         stage('Build') {
             steps {
-                echo "Builing"
+                bat "docker build -t bhanwardocker/myfirstpipeline E:\\DevOpsDemo\\Jenkins\\Slave-1\\workspace\\myfirstpipeline"
             }
         }
-        stage('Test') {
+        stage('Clean') {
             steps {
-                echo 'Testing..'
+                bat 'docker rm -f mypipelineweb || true..'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'docker run -it -d -p 96:80 --name mypipelineweb bhanwardocker/myfirstpipeline'
             }
         }
     }
